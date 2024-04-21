@@ -1,10 +1,11 @@
 import './App.css'
+import Route from './routes'
 
 function App() {
 
   return (
     <>
-      <h2>Eduardo</h2>
+      <Route />
     </>
   )
 }
