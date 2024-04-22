@@ -1,13 +1,19 @@
+import { Link } from "react-router-dom";
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+
 const HeaderGlobal = () => {
 
     return (
-        <div>
-            <ul>
-                <li><a href="/">home</a></li>
-                <li><a href="/about">About us</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </div>
+        <Container>
+            <Navbar expand="lg" className="bg-body-tertiary">
+                <Container>
+                    <Navbar.Brand href="/">Navbar</Navbar.Brand>
+                    <Navbar.Brand href="/about">About us</Navbar.Brand>
+                    <Navbar.Brand href="/contact">Contact us</Navbar.Brand>
+                </Container>
+            </Navbar>
+        </Container>
     );
 
 };
