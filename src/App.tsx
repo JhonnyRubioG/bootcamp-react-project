@@ -1,13 +1,14 @@
 import './App.css'
-import Route from './routes'
+import { BrowserRouter as Router } from 'react-router-dom'
+import Redirection from './routes'
 
 function App() {
 
   return (
-    <>
-      <Route />
-    </>
+    <Router>
+      <Redirection />
+    </Router>
   )
 }
 
-export default App
+export default App;

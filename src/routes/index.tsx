@@ -1,26 +1,21 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 import Homepage from "../views/Homepage";
 import Contact from "../views/Contact";
 import About from "../views/AboutUs";
+import TemplateGlobal from "../views/Template/indez";
 
-const routes = createBrowserRouter([
-    {
-        path: '/',
-        element: <Homepage />
 
-    },
-    {
-        path: '/contact',
-        element: <Contact />
+const Redirection = () => {
 
-    },
-    {
-        path: '/about',
-        element: <About />
+    return (
+        <Routes>
+            <Route path="/" element={<TemplateGlobal />}>
+                <Route index element={<Homepage />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/about" element={<About />} />
+            </Route>
+        </Routes>
+    );
+};
 
-    }
-]);
-
-const Route = () => <RouterProvider router={routes} />;
-
-export default Route;
+export default Redirection;
