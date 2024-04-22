@@ -9,13 +9,13 @@ const HeaderGlobal = () => {
         <Container>
             <Navbar expand="lg" className="bg-body-tertiary">
                 <Container>
-                    <Navbar.Brand href="/">
+                    <Navbar.Brand >
                         <Link to="/">Home</Link>
                     </Navbar.Brand>
-                    <Navbar.Brand href="/about">
+                    <Navbar.Brand >
                         <Link to="/about">About us</Link>
                     </Navbar.Brand>
-                    <Navbar.Brand href="/contact">
+                    <Navbar.Brand >
                         <Link to="/contact">Contact</Link>
                     </Navbar.Brand>
                 </Container>
