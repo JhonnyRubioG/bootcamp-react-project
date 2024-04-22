@@ -1,4 +1,4 @@
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Homepage from "../views/Homepage";
 import Contact from "../views/Contact";
 import About from "../views/AboutUs";
