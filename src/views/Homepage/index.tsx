@@ -65,7 +65,7 @@ const Homepage = () => {
                         {weather.temperature} °C
                     </h3>
                     <h5>
-                        {weather.conditionText} °C
+                        {weather.conditionText}
                     </h5>
                 </div>
             )}
