@@ -46,7 +46,7 @@ const Homepage = () => {
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>City</Form.Label>
-                    <Form.Control onChange={handleChange} type="text" placeholder="Enter city" />    
+                    <Form.Control onChange={handleChange} type="text" placeholder="Enter city" required/>    
                 </Form.Group>
 
                 
