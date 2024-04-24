@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useForm } from 'react-hook-form'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -6,11 +7,14 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+interface FormData {
+    city: string;
+}
 
 const Homepage = () => {
 
-    const  API_WEATHER =  "https://api.weatherapi.com/v1/current.json?key=c21db2bcc653436281242558242204&q="
-    const [city, setCity] = useState("")
+    const API_WEATHER =  "https://api.weatherapi.com/v1/current.json?key=c21db2bcc653436281242558242204&q="
+    const { register, handleSubmit, reset} = useForm<FormData>();
     const [weather, setWeather] = useState({
         city: "",
         country: "",
@@ -18,16 +22,11 @@ const Homepage = () => {
         condition: "",
         conditionText: "",
         icon: "",
-      });
-    
-    const handleChange = (event: any) => {
-        setCity(event.target.value)
-    };
-    
-    const handleSubmit = async(event: any) => {
-        event.preventDefault();
+    });
+
+    const onSubmit = handleSubmit(async(values) => {
         try {
-            const res = await fetch(API_WEATHER + city);
+            const res = await fetch(API_WEATHER + values.city);
             const data = await res.json();
 
             setWeather({
@@ -38,11 +37,11 @@ const Homepage = () => {
                 conditionText: data.current.condition.text,
                 icon: data.current.condition.icon,
             });
-
+            reset();
         } catch (error) {
             console.log(error);
         }
-    };
+    });
     
     return (
         <Container style={{padding: 20}}>
@@ -52,10 +51,10 @@ const Homepage = () => {
                         Plan your day with CityWeather!
                     </h2>
 
-                    <Form onSubmit={handleSubmit}>
+                    <Form onSubmit={onSubmit}>
                         <InputGroup className="mb-3">
-                            <Form.Control type="text" onChange={handleChange} placeholder="Enter city" aria-label="City" aria-describedby="basic-addon2" />
-                            <Button data-bs-theme="dark" variant="outline-secondary" type="submit">Submit</Button>
+                            <Form.Control type="text" {...register('city', { required: true })} placeholder="Enter city" />
+                            <Button variant="outline-secondary" type="submit">Submit</Button>
                         </InputGroup>
                     </Form>
 
