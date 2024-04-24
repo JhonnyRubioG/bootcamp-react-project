@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -10,7 +9,7 @@ const HeaderGlobal = () => {
         <Navbar expand="lg" bg="dark" data-bs-theme="dark">
             <Container>
                 <Navbar.Brand>
-                    <Link to="/">CityWeather</Link>
+                    <Nav.Link href="/">CityWeather</Nav.Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

@@ -45,31 +45,35 @@ const Homepage = () => {
     };
     
     return (
-        <Container >
-                  <Row>
-                  <Col md={{ span: 6, offset: 3 }}>
-            <Form onSubmit={handleSubmit}>
-                <InputGroup className="mb-3">
-                    <Form.Control type="text" onChange={handleChange} placeholder="Enter city" aria-label="City" aria-describedby="basic-addon2" />
-                    <Button variant="outline-secondary" type="submit">Submit</Button>
-                </InputGroup>
-            </Form>
+        <Container style={{padding: 20}}>
+            <Row>
+                <Col md={{ span: 6, offset: 3 }}>
+                    <h2 className="text-center">
+                        Plan your day with CityWeather!
+                    </h2>
 
-            {weather.city && (
-                <div>
-                    <Card className="text-center">
-                        <Card.Header>{weather.city}, {weather.country}</Card.Header>
-                            <Card.Body>
-                                <img alt={weather.conditionText} src={weather.icon} />
-                                <Card.Text>
-                                    {weather.temperature} °C
-                                </Card.Text>
-                            </Card.Body>
-                        <Card.Footer className="text-muted">{weather.conditionText}</Card.Footer>
-                    </Card>
-                </div>
-            )}
-            </Col>
+                    <Form onSubmit={handleSubmit}>
+                        <InputGroup className="mb-3">
+                            <Form.Control type="text" onChange={handleChange} placeholder="Enter city" aria-label="City" aria-describedby="basic-addon2" />
+                            <Button data-bs-theme="dark" variant="outline-secondary" type="submit">Submit</Button>
+                        </InputGroup>
+                    </Form>
+
+                    {weather.city && (
+                        <div>
+                            <Card className="text-center">
+                                <Card.Header>{weather.city}, {weather.country}</Card.Header>
+                                    <Card.Body>
+                                        <img alt={weather.conditionText} src={weather.icon} />
+                                        <Card.Text>
+                                            {weather.temperature} °C
+                                        </Card.Text>
+                                    </Card.Body>
+                                <Card.Footer className="text-muted">{weather.conditionText}</Card.Footer>
+                            </Card>
+                        </div>
+                    )}
+                </Col>
             </Row>
         </Container>
     )

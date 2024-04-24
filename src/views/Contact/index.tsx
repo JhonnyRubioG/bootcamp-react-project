@@ -1,8 +1,12 @@
+import Container from 'react-bootstrap/Container';
+
 const Contact = () => {
     return (
-        <div>
-            <h2>Contact</h2>
-        </div>
+        <Container style={{padding: 20}}>
+            <div>
+                <h2>Contact</h2>
+            </div>
+        </Container>
     );
 };
 
