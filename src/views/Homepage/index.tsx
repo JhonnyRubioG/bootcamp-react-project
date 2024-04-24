@@ -1,6 +1,11 @@
 import { useState } from "react";
+import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const Homepage = () => {
 
@@ -25,8 +30,6 @@ const Homepage = () => {
             const res = await fetch(API_WEATHER + city);
             const data = await res.json();
 
-            console.log(data);
-
             setWeather({
                 city: data.location.name,
                 country: data.location.country,
@@ -42,34 +45,33 @@ const Homepage = () => {
     };
     
     return (
-        <div>
+        <Container >
+                  <Row>
+                  <Col md={{ span: 6, offset: 3 }}>
             <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>City</Form.Label>
-                    <Form.Control onChange={handleChange} type="text" placeholder="Enter city" required/>    
-                </Form.Group>
-
-                
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
+                <InputGroup className="mb-3">
+                    <Form.Control type="text" onChange={handleChange} placeholder="Enter city" aria-label="City" aria-describedby="basic-addon2" />
+                    <Button variant="outline-secondary" type="submit">Submit</Button>
+                </InputGroup>
             </Form>
 
             {weather.city && (
                 <div>
-                    <h2>
-                        {weather.city}, {weather.country}
-                    </h2>
-                    <img alt={weather.conditionText} src={weather.icon} />
-                    <h3>
-                        {weather.temperature} °C
-                    </h3>
-                    <h5>
-                        {weather.conditionText}
-                    </h5>
+                    <Card className="text-center">
+                        <Card.Header>{weather.city}, {weather.country}</Card.Header>
+                            <Card.Body>
+                                <img alt={weather.conditionText} src={weather.icon} />
+                                <Card.Text>
+                                    {weather.temperature} °C
+                                </Card.Text>
+                            </Card.Body>
+                        <Card.Footer className="text-muted">{weather.conditionText}</Card.Footer>
+                    </Card>
                 </div>
             )}
-        </div>
+            </Col>
+            </Row>
+        </Container>
     )
 };
 

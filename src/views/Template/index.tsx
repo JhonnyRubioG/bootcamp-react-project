@@ -7,9 +7,7 @@ const TemplateGlobal = () => {
     return (
         <div>
             <HeaderGlobal />
-            <Container>
-                <Outlet />
-            </Container>
+            <Outlet />
         </div>
     );
 
