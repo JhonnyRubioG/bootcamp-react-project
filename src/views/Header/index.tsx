@@ -8,8 +8,15 @@ const HeaderGlobal = () => {
     return (
         <Navbar expand="lg" bg="dark" data-bs-theme="dark">
             <Container>
-                <Navbar.Brand>
-                    <Nav.Link href="/">CityWeather</Nav.Link>
+                <Navbar.Brand href="/">
+                    <img
+                        alt=""
+                        src="/logo.svg"
+                        width="30"
+                        height="30"
+                        className="d-inline-block align-top"
+                        />{' '}
+                    CityWeather
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
