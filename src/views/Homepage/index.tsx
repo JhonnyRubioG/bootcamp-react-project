@@ -18,18 +18,28 @@ const Homepage = () => {
 
     const { fetchCity, data } = useFetchCity();
     const { register, handleSubmit, reset } = useForm<FormData>();
-    const [weather, setWeather] = useState({});
+    const [weather, setWeather] = useState({
+        city: "",
+        country: "",
+        temperature: 0,
+        conditionText: "",
+        icon: "",
+    });
 
     const onSubmit = handleSubmit(async(values) => {
         fetchCity(values.city);
-        setWeather({
-            city: data?.location?.name,
-            country: data?.location?.country,
-            temperature: data?.current?.temp_c,
-            condition: data?.current?.condition.code,
-            conditionText: data?.current?.condition?.text,
-            icon: data?.current?.condition?.icon,
-        });
+        console.log(data)
+        if (data) {
+            setWeather({
+                city: data?.location?.name,
+                country: data?.location?.country,
+                temperature: data?.current?.temp_c,
+                conditionText: data?.current?.condition?.text,
+                icon: data?.current?.condition?.icon,
+            });
+        }
+        
+        reset();
     });
     
     return (
