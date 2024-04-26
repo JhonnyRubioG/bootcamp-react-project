@@ -18,20 +18,9 @@ const Homepage = () => {
 
     const { fetchCity, data } = useFetchCity();
     const { register, handleSubmit, reset } = useForm<FormData>();
-    const [weather, setWeather] = useState({
-        city: "",
-        country: "",
-        temperature: 0,
-        condition: "",
-        conditionText: "",
-        icon: "",
-    });
+    const [weather, setWeather] = useState({});
 
-    useEffect(() => {
-        data
-    }, []);
-
-    const onSubmit = handleSubmit((values) => {
+    const onSubmit = handleSubmit(async(values) => {
         fetchCity(values.city);
         setWeather({
             city: data?.location?.name,
@@ -41,8 +30,6 @@ const Homepage = () => {
             conditionText: data?.current?.condition?.text,
             icon: data?.current?.condition?.icon,
         });
-
-        reset();
     });
     
     return (
