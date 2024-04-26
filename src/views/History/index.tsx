@@ -1,13 +1,13 @@
 import Container from 'react-bootstrap/Container';
 
-const Contact = () => {
+const History = () => {
     return (
         <Container style={{padding: 20}}>
             <div>
-                <h2>Contact</h2>
+                <h2>History</h2>
             </div>
         </Container>
     );
 };
 
-export default Contact;
+export default History;
