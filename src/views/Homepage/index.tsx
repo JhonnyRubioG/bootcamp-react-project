@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from 'react-hook-form'
+import useFetchCity from "../../hook/useFetchCity";
+
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -7,14 +9,15 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
 interface FormData {
     city: string;
 }
 
 const Homepage = () => {
 
-    const API_WEATHER =  "https://api.weatherapi.com/v1/current.json?key=c21db2bcc653436281242558242204&q="
-    const { register, handleSubmit, reset} = useForm<FormData>();
+    const { fetchCity, data } = useFetchCity();
+    const { register, handleSubmit, reset } = useForm<FormData>();
     const [weather, setWeather] = useState({
         city: "",
         country: "",
@@ -24,23 +27,22 @@ const Homepage = () => {
         icon: "",
     });
 
-    const onSubmit = handleSubmit(async(values) => {
-        try {
-            const res = await fetch(API_WEATHER + values.city);
-            const data = await res.json();
+    useEffect(() => {
+        data
+    }, []);
 
-            setWeather({
-                city: data.location.name,
-                country: data.location.country,
-                temperature: data.current.temp_c,
-                condition: data.current.condition.code,
-                conditionText: data.current.condition.text,
-                icon: data.current.condition.icon,
-            });
-            reset();
-        } catch (error) {
-            console.log(error);
-        }
+    const onSubmit = handleSubmit((values) => {
+        fetchCity(values.city);
+        setWeather({
+            city: data?.location?.name,
+            country: data?.location?.country,
+            temperature: data?.current?.temp_c,
+            condition: data?.current?.condition.code,
+            conditionText: data?.current?.condition?.text,
+            icon: data?.current?.condition?.icon,
+        });
+
+        reset();
     });
     
     return (
