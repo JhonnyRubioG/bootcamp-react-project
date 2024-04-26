@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from 'react-hook-form'
-import useFetchCity from "../../hook/useFetchCity";
+import { useFetchCity } from "../../hook/useFetchCity";
 
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -15,8 +15,6 @@ interface FormData {
 }
 
 const Homepage = () => {
-
-    const { fetchCity, data } = useFetchCity();
     const { register, handleSubmit, reset } = useForm<FormData>();
     const [weather, setWeather] = useState({
         city: "",
@@ -26,19 +24,19 @@ const Homepage = () => {
         icon: "",
     });
 
-    const onSubmit = handleSubmit(async(values) => {
-        fetchCity(values.city);
-        console.log(data)
-        if (data) {
-            setWeather({
-                city: data?.location?.name,
-                country: data?.location?.country,
-                temperature: data?.current?.temp_c,
-                conditionText: data?.current?.condition?.text,
-                icon: data?.current?.condition?.icon,
-            });
-        }
-        
+    const handleGetData = async (params: any) => {
+        const data = await useFetchCity(params);
+        setWeather({
+            city: data?.location?.name,
+            country: data?.location?.country,
+            temperature: data?.current?.temp_c,
+            conditionText: data?.current?.condition?.text,
+            icon: data?.current?.condition?.icon,
+        });
+    };
+
+    const onSubmit = handleSubmit((values) => {
+        handleGetData(values.city);
         reset();
     });
     
