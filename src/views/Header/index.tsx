@@ -21,8 +21,8 @@ const HeaderGlobal = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                    <Nav.Link href="/history">History</Nav.Link>
-                        <Nav.Link href="/about">About us</Nav.Link>
+                    <Nav.Link href="/history">Historial de busqueda</Nav.Link>
+                        <Nav.Link href="/about">Acerca de CityWeather</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

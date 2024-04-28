@@ -24,8 +24,8 @@ const Homepage = () => {
         icon: "",
     });
 
-    const handleGetData = async (params: any) => {
-        const data = await useFetchCity(params);
+    const onSubmit =  async (params: any) => {
+        const data = await useFetchCity(params.city);
         setWeather({
             city: data?.location?.name,
             country: data?.location?.country,
@@ -33,25 +33,21 @@ const Homepage = () => {
             conditionText: data?.current?.condition?.text,
             icon: data?.current?.condition?.icon,
         });
-    };
-
-    const onSubmit = handleSubmit((values) => {
-        handleGetData(values.city);
         reset();
-    });
+    };
     
     return (
         <Container style={{padding: 20}}>
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
                     <h2 className="text-center">
-                        Plan your day with CityWeather!
+                        ¡Planifica tu día con CityWeather!
                     </h2>
 
-                    <Form onSubmit={onSubmit}>
+                    <Form onSubmit={handleSubmit(onSubmit)}>
                         <InputGroup className="mb-3">
-                            <Form.Control type="text" {...register('city', { required: true })} placeholder="Enter city" />
-                            <Button variant="outline-secondary" type="submit">Submit</Button>
+                            <Form.Control type="text" {...register('city', { required: true })} placeholder="Ingrese la ciudad" />
+                            <Button variant="outline-secondary" type="submit">Consultar</Button>
                         </InputGroup>
                     </Form>
 
