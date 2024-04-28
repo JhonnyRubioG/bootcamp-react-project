@@ -29,7 +29,7 @@ const About = () => {
                                 <Card.Body>
                                     <Card.Title>Hooks Reusables</Card.Title>
                                     <Card.Text>
-                                        Para obtener la información del clima se utiliza Weather API, se creo
+                                        Para obtener la información del clima se utiliza Weather API, se creó
                                         un Hook reusable para realizar la consulta al API.
                                     </Card.Text>
                                 </Card.Body>
@@ -41,7 +41,7 @@ const About = () => {
                                 <Card.Body>
                                     <Card.Title>React hook form</Card.Title>
                                     <Card.Text>
-                                        Para consutlar se implementa un formulario para ingresar el nombre de la ciudad que
+                                        Para consultar se implementa un formulario para ingresar el nombre de la ciudad que
                                         se desea consultar el clima.
                                     </Card.Text>
                                 </Card.Body>
@@ -54,7 +54,7 @@ const About = () => {
                                     <Card.Title>Routing</Card.Title>
                                     <Card.Text>
                                         Se utiliza React router para implementar tres rutas Home, Historial de
-                                        busqueda y Acerca de CityWeather.
+                                        búsqueda y Acerca de CityWeather.
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -65,8 +65,31 @@ const About = () => {
                                 <Card.Body>
                                     <Card.Title>Deploy a producción</Card.Title>
                                     <Card.Text>
-                                        Para realizar el despliegue del proyecto web a producción se utlizó Netlify
+                                        Para realizar el despliegue del proyecto web a producción se utilizó Netlify
                                         y GitHub para alojamiento del código.
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+
+                        <Col md={4}>
+                            <Card bg={'dark'} style={{ width: '18rem' }} text={'white'} className="mb-2">
+                                <Card.Body>
+                                    <Card.Title>Zustand</Card.Title>
+                                    <Card.Text>
+                                        Se desea implementar zustand para el manejo de estados globales y almacenar la 
+                                        información del resultado de la búsqueda.
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+
+                        <Col md={4}>
+                            <Card bg={'dark'} style={{ width: '18rem' }} text={'white'} className="mb-2">
+                                <Card.Body>
+                                    <Card.Title>Estilos</Card.Title>
+                                    <Card.Text>
+                                        Para agregar estilos a la erb se utilizó reac-bootstrap.
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
